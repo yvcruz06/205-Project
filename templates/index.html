@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% block head %}
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      {% block styles %}
+        {{ bootstrap.load_css() }}
+      {% endblock %}
+      <title>NASA API Search</title>
+    {% endblock %}
+  </head>
+<body>
+  {% block content %}
+  <div class="container-fluid">
+
+      <h1>NASA API Images Search</h1>
+
+      <form class="form-control form-control-lg" method="POST" action="/">
+          {{ form.search_terms.label }} 
+          {{ form.search_terms(size=32) }}
+          <input type="submit" value="Submit">
+      </form>
+   
+  </div>  
+  {% endblock %}
+</body>
+</html>
