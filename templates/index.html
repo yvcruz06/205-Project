@@ -12,11 +12,17 @@
   </head>
 <body>
   {% block content %}
-    <form method="POST" action="/">
-        {{ form.search_term.label }} 
-        {{ form.search_term(size=32) }}
-        <input type="submit" value="Submit">
-    </form>
+  <div class="container-fluid">
+
+      <h1>NASA API Images Search</h1>
+
+      <form class="form-control form-control-lg" method="POST" action="/">
+          {{ form.search_terms.label }} 
+          {{ form.search_terms(size=32) }}
+          <input type="submit" value="Submit">
+      </form>
+   
+  </div>  
   {% endblock %}
 </body>
 </html>
