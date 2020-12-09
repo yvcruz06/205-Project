@@ -1,3 +1,5 @@
+#using API example code from class
+import requests, json
 from PIL import Image
 # Use the below import line: no package installation is necessary, io is included in python by default
 from io import BytesIO
