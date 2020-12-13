@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      {% block styles %}
+        {{ bootstrap.load_css() }}
+      {% endblock %}
+      <title>Image</title>
+      <a href="{{url_for('index')}}">Home</a>
+  </head>
+<body>
+  <div class="container">
+    <h1>Modify your image here</h1>
+    <div class="row">
+      <div class="col-md-auto">
+        <img
+          src="../static/image.png"
+          class="img-fluid rounded" />
+      </div>
+      <div class="col-md-auto">
+        <form method="POST">
+          <strong>Filters:</strong><br>
+          <input type="radio" name="filters" id="option1" value="sepia"> sepia </input><br>
+          <input type="radio" name="filters" id="option2" value="negative"> negative </input><br>
+          <input type="radio" name="filters" id="option3" value="grayscale"> grayscale </input><br>
+          <strong>Crop/resize:</strong><br>
+          <input type="radio" name="size" id="option1" value="enlarge"> enlarge </input><br>
+          <input type="radio" name="size" id="option2" value="shrink"> shrink </input><br>
+          <input type="radio" name="size" id="option3" value="rotate"> rotate </input><br>
+          <input type="radio" name="size" id="option3" value="crop"> crop </input><br>
+          <input type="radio" name="size" id="option3" value="flip"> flip </input><br>
+          <input type="submit" value="Submit" name="submit">
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

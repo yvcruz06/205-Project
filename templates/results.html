@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      {% block styles %}
+        {{ bootstrap.load_css() }}
+      {% endblock %}
+      <title>Search results</title>
+      <a href="{{url_for('index')}}">Home</a>
+  </head>
+<body>
+  <div class="container">
+    <h1>Search Results</h1>
+    <div class="row m-2">
+      {% for result in results %}
+        {% if result["links"] %}
+            <div class="col-md-3 m-2">
+              <a href="{{url_for('image', nasa_id=result['data'][0]['nasa_id'])}}">
+                <strong>
+                  {{result["data"][0]["title"]}}
+                </strong>
+                <img
+                src="{{result['links'][0]['href']}}"
+                width="250"
+                class="img-fluid rounded" />
+              </a>
+            </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

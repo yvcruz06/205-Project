@@ -7,9 +7,12 @@
 from PIL import Image
 
 class FilteredImage():
-  def __init__(self, image, filter):
+  def __init__(self, filter):
     # ensure that the filter name is always lowercase
     filter = filter.lower()
+    # open image here
+    image = Image.open("static/image.png")
+    print(filter)
     filters = {
       "sepia": self.sepia,
       "negative": self.negative,
@@ -17,9 +20,8 @@ class FilteredImage():
     }
 
     if filter in filters:
-      image = filters[filter](image)
-
-    return image
+      filtered_image = filters[filter](image)
+      filtered_image.save("static/image.png")
 
   def sepia(self, image):
     for x in range(image.width):

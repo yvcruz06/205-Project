@@ -7,17 +7,20 @@
 from PIL import Image
 
 class resize_image():
-    def __init__(self, image, size):
+    def __init__(self, size):
         # ensure that the filter name is always lowercase
         size = size.lower()
+        image = Image.open("static/image.png")
         sizes = {
-        "enlarge": self.enlarge,
-        "shrink": self.shrink,
-        "rotate": self.rotate
+            "enlarge": self.enlarge,
+            "shrink": self.shrink,
+            "rotate": self.rotate,
+            "crop": self.crop,
+            "flip": self.flip
         }
         if size in sizes:
-            image = sizes[size](image)
-        return image
+            resized_image = sizes[size](image)
+            resized_image.save("static/image.png")
 
     def enlarge(self, image):
         x = image.size[0]
