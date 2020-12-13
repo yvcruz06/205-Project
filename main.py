@@ -4,12 +4,8 @@
 # Group Project - Team 28
 # Website that searches through a NASA API
 
-<<<<<<< Updated upstream
-from flask import Flask, render_template, flash, redirect
-=======
 import requests, json
 from flask import Flask, render_template, flash, redirect, url_for, request
->>>>>>> Stashed changes
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
@@ -25,11 +21,12 @@ app.config['SECRET_KEY'] = 'csumb-otter'
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 bootstrap = Bootstrap(app)
 
+my_key = 'D8FJrAVDcE5RHJ29uwD5lRftLXMDO6Tw3iGnj19V'
+endpoint = 'https://images-api.nasa.gov/search'
+api_result = {}
+
 class Search(FlaskForm):
     search_terms = StringField('Search Terms', validators=[DataRequired()])
-<<<<<<< Updated upstream
-    
-=======
 
 def getResults(terms): 
     global api_result
@@ -45,19 +42,15 @@ def getResults(terms):
 
     with open('results.json', 'w') as json_file:
         json.dump(api_result, json_file)  
->>>>>>> Stashed changes
 
 # homepage
 @app.route('/', methods=('GET', 'POST'))
 def index():
     form = Search()
-<<<<<<< Updated upstream
-=======
     if form.validate_on_submit():
         getResults(form.search_terms.data)
         #redirect here
         return render_template("results.html", results=api_result["collection"]["items"])
->>>>>>> Stashed changes
     return render_template('index.html', form=form)
 
 @app.route("/image/<string:nasa_id>", methods=('GET', 'POST'))

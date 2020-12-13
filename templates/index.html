@@ -17,6 +17,7 @@
       <h1>NASA API Images Search</h1>
 
       <form class="form-control form-control-lg" method="POST" action="/">
+          {{ form.csrf_token }}
           {{ form.search_terms.label }} 
           {{ form.search_terms(size=32) }}
           <input type="submit" value="Submit">
