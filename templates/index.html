@@ -14,13 +14,15 @@
   {% block content %}
   <div class="container-fluid">
 
-      <h1>NASA API Images Search</h1>
+      <h1 class="text-center">NASA API Images Search</h1>
 
-      <form class="form-control form-control-lg" method="POST" action="/">
+      <form class="form-control form-control-lg d-flex justify-content-center h-25" method="POST" action="/">
+        <div class=>
           {{ form.csrf_token }}
           {{ form.search_terms.label }} 
           {{ form.search_terms(size=32) }}
-          <input type="submit" value="Submit">
+          <input type="submit" value="Submit" class="btn btn-success ml-4 mb-2">
+        </div>
       </form>
    
   </div>  

@@ -7,11 +7,13 @@
         {{ bootstrap.load_css() }}
       {% endblock %}
       <title>Search results</title>
-      <a href="{{url_for('index')}}">Home</a>
+      <a href="{{url_for('index')}}"><h1 class="text-center">Home</h1></a>
   </head>
 <body>
   <div class="container">
-    <h1>Search Results</h1>
+    <div class="jumbotron justify-content-center">
+    <h1 class="text-center">Search Results</h1>
+    </div>
     <div class="row m-2">
       {% for result in results %}
         {% if result["links"] %}
@@ -23,7 +25,7 @@
                 <img
                 src="{{result['links'][0]['href']}}"
                 width="250"
-                class="img-fluid rounded" />
+                class="img-fluid rounded border border-danger" />
               </a>
             </div>
         {% endif %}

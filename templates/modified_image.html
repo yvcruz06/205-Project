@@ -7,18 +7,21 @@
         {{ bootstrap.load_css() }}
       {% endblock %}
       <title>Modified Image</title>
-      <a href="{{url_for('index')}}">Home</a>
+      <a href="{{url_for('index')}}"><h1 class="text-center">Home</h1></a>
   </head>
 <body>
   <div class="container">
-    <h1>Here is your modified image</h1>
+    <h1 class="text-center">Here is your modified image</h1>
     <div class="row">
-      <div class="col-md-auto">
+      <div class="mx-auto">
         <img
           src="../static/image.png"
-          class="img-fluid rounded" />
+          class="rounded border border-primary" />
       </div>
     </div>
   </div>
 </body>
+<footer>
+<br>
+</footer>
 </html>
