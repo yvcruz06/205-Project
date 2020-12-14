@@ -66,10 +66,11 @@ def image(nasa_id):
         return redirect("/")
     else:
         if "submit" in request.form:
-            if request.form["filters"]:
-                filtered_image = FilteredImage(request.form["filters"])
-            if request.form["size"]:
-                resized_image = resize_image(request.form["size"])
+            # Modified ifs so that it can no longer look at empty data
+            if request.form['filters']!="none":
+                filtered_image = FilteredImage(request.form['filters'])
+            if request.form['size']!="none":
+                resized_image = resize_image(request.form['size'])
         return redirect("/modifiedImage")
 
 @app.route("/modifiedImage")
