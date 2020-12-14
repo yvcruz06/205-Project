@@ -25,17 +25,17 @@ class resize_image():
     def enlarge(self, image):
         x = image.size[0]
         y = image.size[1]
-        x = x * 1.5
-        y = y * 1.5
-        new_image = image((x,y))
+        x = int(x * 1.5)
+        y = int(y * 1.5)
+        new_image = image.resize((x,y))
         return new_image
 
     def shrink(self, image):
         x = image.size[0]
         y = image.size[1]
-        x = x * 0.5
-        y = y * 0.5
-        new_image = image((x, y))
+        x = int(x * 0.5)
+        y = int(y * 0.5)
+        new_image = image.resize((x,y))
         return new_image
 
     def rotate(self, image):
@@ -43,7 +43,11 @@ class resize_image():
         return image_rot
     
     def crop(self, image):
-        box = (200, 300, 700, 600)
+        leftcrop = (image.size[0] - (image.size[0]/2))/2
+        topcrop = (image.size[1] - (image.size[1]/2))/2
+        rightcrop = (image.size[0] + (image.size[0]/2))/2
+        botcrop = (image.size[1] + (image.size[1]/2))/2
+        box = (leftcrop, topcrop, rightcrop, botcrop)
         cropped_image = image.crop(box)
         return cropped_image
 
