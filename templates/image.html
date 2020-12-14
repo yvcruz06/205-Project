@@ -7,7 +7,9 @@
         {{ bootstrap.load_css() }}
       {% endblock %}
       <title>Image</title>
-      <a href="{{url_for('index')}}">Home</a>
+      <div class="jumbotron text-centered">
+      <a href="{{url_for('index')}}"><h1 class="text-center">Home</h1></a>
+      </div>
   </head>
 <body>
   <div class="container">
@@ -16,7 +18,7 @@
       <div class="col-md-auto">
         <img
           src="../static/image.png"
-          class="img-fluid rounded" />
+          class="img-fluid rounded border border-primary" />
       </div>
       <div class="col-md-auto">
         <form method="POST">
@@ -25,6 +27,14 @@
           <input type="radio" name="filters" id="option1" value="sepia"> sepia </input><br>
           <input type="radio" name="filters" id="option2" value="negative"> negative </input><br>
           <input type="radio" name="filters" id="option3" value="grayscale"> grayscale </input><br>
+          <input type="radio" name="filters" id="option4" value="colormap"> colormap </input><br>
+          <select name="colormap" id="option4_2" class="form-control">
+            <option value=21>Deep Green</option>
+            <option value=20>Turbo</option>
+            <option value=1>Bone</option>
+            <option value=18>Twilight</option>
+            <option value=15>Plasma</option>
+          </select><br>
           <strong>Crop/resize:</strong><br>
           <input type="radio" name="size" id="option0" value="none" checked="checked"> no resize </input><br>
           <input type="radio" name="size" id="option1" value="enlarge"> enlarge </input><br>
@@ -32,10 +42,13 @@
           <input type="radio" name="size" id="option3" value="rotate"> rotate </input><br>
           <input type="radio" name="size" id="option3" value="crop"> crop </input><br>
           <input type="radio" name="size" id="option3" value="flip"> flip </input><br>
-          <input type="submit" value="Submit" name="submit">
+          <input type="submit" value="Submit" name="submit" class="btn btn-success mt-2">
         </form>
       </div>
     </div>
   </div>
 </body>
+<footer>
+<br>
+</footer>
 </html>
