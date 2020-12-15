@@ -2,7 +2,7 @@
 # Yvonne Cruz, Niel McMahan, Shawn Deppe, Albert Salas
 # 12/06/2020
 # Group Project - Team 28
-# Website that searches through a NASA API
+# Website that searches through a NASA API and adds filters to image results
 
 import requests, json
 from flask import Flask, render_template, flash, redirect, url_for, request
