@@ -61,8 +61,10 @@ def index():
 @app.route("/image/<string:nasa_id>", methods=('GET', 'POST'))
 def image(nasa_id):
     if request.method == "GET":
+        # check to see if the id provided in the URL is a valid one
         for result in api_result["collection"]["items"]:
             if result["data"][0]["nasa_id"] == nasa_id:
+                # grab URL for image and convert to PIL image
                 url = requests.get(result["links"][0]["href"])
                 image = Image.open(BytesIO(url.content))
                 image.save("static/image.png")
@@ -70,6 +72,7 @@ def image(nasa_id):
 
         return redirect("/")
     else:
+        # here we check what options the user selected
         if "submit" in request.form:
             # Modified ifs so that it can no longer look at empty data
             if request.form['filters']!="none":
@@ -85,6 +88,7 @@ def image(nasa_id):
                 resized_image = resize_image(request.form['size'])
         return redirect("/modifiedImage")
 
+# this route renders a page with the image and the modifcations a user chose
 @app.route("/modifiedImage")
 def modifiedImage():
     return render_template("modified_image.html")
