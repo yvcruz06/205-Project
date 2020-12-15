@@ -2,7 +2,8 @@
 # Yvonne Cruz, Niel McMahan, Shawn Deppe, Albert Salas
 # 12/06/2020
 # Group Project - Team 28
-# Website that searches through a NASA API and adds filters to image results
+# Website that searches through a NASA API
+# https://github.com/yvcruz06/205-Project
 
 import requests, json
 from flask import Flask, render_template, flash, redirect, url_for, request
@@ -14,12 +15,16 @@ from PIL import Image
 from io import BytesIO
 from image_filter import FilteredImage
 from image_resizer import resize_image
+import numpy as np
+import cv2
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'csumb-otter'
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 bootstrap = Bootstrap(app)
+
+app.config['BOOTSTRAP_BOOTSWATCH_THEME'] = 'superhero'
 
 my_key = 'D8FJrAVDcE5RHJ29uwD5lRftLXMDO6Tw3iGnj19V'
 endpoint = 'https://images-api.nasa.gov/search'
@@ -68,7 +73,14 @@ def image(nasa_id):
         if "submit" in request.form:
             # Modified ifs so that it can no longer look at empty data
             if request.form['filters']!="none":
-                filtered_image = FilteredImage(request.form['filters'])
+                #very clumsy, but it does properly map images
+                if request.form['filters']=="colormap":
+                    colormap = int(request.form['colormap'])
+                    mapped_image = cv2.imread("static/image.png", cv2.IMREAD_GRAYSCALE)
+                    mapped_image = cv2.applyColorMap(mapped_image, colormap)
+                    cv2.imwrite("static/image.png", mapped_image)
+                else:    
+                    filtered_image = FilteredImage(request.form['filters'])
             if request.form['size']!="none":
                 resized_image = resize_image(request.form['size'])
         return redirect("/modifiedImage")
