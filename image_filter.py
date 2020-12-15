@@ -1,8 +1,9 @@
-# CST 205
-# Albert Salas
+# Course: CST 205
+# Title: image_filter.py
+# Abstract: This file creates a filtered version of an image. It has 3 filters: sepia, negative, and grayscale.
+#           Images must be in PIL format for it to work.
+# Author(s): Albert Salas (with filters adapted from Professor Biblarz' slides)
 # 12/08/2020
-# Group Project - Team 28
-# Filters for images in PIL format
 
 from PIL import Image
 
@@ -12,7 +13,9 @@ class FilteredImage():
     filter = filter.lower()
     # open image here
     image = Image.open("static/image.png")
-    print(filter)
+    
+    # This has allows us to call the appropiate function without
+    # having to write a bunch of if statements
     filters = {
       "sepia": self.sepia,
       "negative": self.negative,
@@ -23,6 +26,7 @@ class FilteredImage():
       filtered_image = filters[filter](image)
       filtered_image.save("static/image.png")
 
+  # Filters were adapted from Professor Biblarz' code
   def sepia(self, image):
     for x in range(image.width):
       for y in range(image.height):
